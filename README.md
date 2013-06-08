@@ -1,3 +1,5 @@
+Travis CI: [![Build Status](https://travis-ci.org/khepin/durationjs.png?branch=master)](https://travis-ci.org/khepin/durationjs)
+
 # DurationJS
 
 Duration allows you to parse human written durations such as "1 hour 30min" and
