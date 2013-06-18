@@ -28,10 +28,10 @@
         },
         parse: function(duration) {
             this._seconds = 0;
-            var times = duration.match(/(\d+)\s*([a-zA-Z]+)/g);
+            var times = duration.match(/(\d*\.?\d+)\s*([a-zA-Z]+)/g);
 
             times.forEach(function(time){
-                var timePart = /(\d+)\s*([a-zA-Z]+)/i.exec(time);
+                var timePart = /(\d*\.?\d+)\s*([a-zA-Z]+)/i.exec(time);
                 var unit = timePart[2].toLowerCase();
                 var number = timePart[1];
                 this.add(number, unit);

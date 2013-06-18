@@ -31,6 +31,15 @@ describe("DurationJS", function() {
         expect(d.parse('90      second').seconds()).toBe(90);
     });
 
+    it("can parse decimal numbers too", function(){
+        var d = new Duration();
+
+        expect(d.parse('0.5 hours').seconds()).toBe(1800);
+        expect(d.parse('.2 hours').seconds()).toBe(720);
+
+        expect(d.parse('.5 seconds').seconds()).toBe(0.5);
+    });
+
 });
 /**
  * Starts the testing environment
