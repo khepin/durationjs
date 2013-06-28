@@ -16,12 +16,13 @@
         },
         add: function(number, unit) {
             for (unitType in this.units) {
-                this.units[unitType].labels.forEach(function(label){
-                    if (unit === label) {
+                var labels = this.units[unitType].labels;
+                for (var i = 0; i < labels.length; i++) {
+                    if (unit === labels[i]) {
                         this._seconds += number * this.units[unitType].multiplier;
                         return;
                     }
-                }, this);
+                }
             }
 
             return this;
@@ -30,12 +31,12 @@
             this._seconds = 0;
             var times = duration.match(/(\d*\.?\d+)\s*([a-zA-Z]+)/g);
 
-            times.forEach(function(time){
-                var timePart = /(\d*\.?\d+)\s*([a-zA-Z]+)/i.exec(time);
+            for (var i = 0; i < times.length; i++) {
+                var timePart = /(\d*\.?\d+)\s*([a-zA-Z]+)/i.exec(times[i]);
                 var unit = timePart[2].toLowerCase();
                 var number = timePart[1];
                 this.add(number, unit);
-            }, this);
+            }
 
             return this;
         },
