@@ -25,4 +25,16 @@ Examples:
  - `d.days()` Gives you the current duration as a number of days
  - `d.hours()` Gives you the current duration as a number of hours
  - `d.minutes()` Gives you the current duration as a number of minutes
- - `d.seconds()` Gives you the current duration as a number osecondsks
+ - `d.seconds()` Gives you the current duration as a number of seconds
+ - `d.format(f)` Returns the current duration formatted according to f
+
+
+ ### Formatting
+
+ `Duration.format` will work as follows:
+
+     var d = new Duration('5 week 2d 7h 17 minutes 6 s');
+
+     d.format('ww weeks and hh hours') // => 5 weeks and 55 hours
+     d.format('ww weeks, dd days and hh hours') // => 5 weeks, 2 days and 7 hours
+     d.format('mm minutes ss seconds') // => 3317 minutes 6 seconds

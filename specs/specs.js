@@ -3,8 +3,8 @@ describe("DurationJS", function() {
     it("can parse durations as strings", function(){
         var d = new Duration();
 
-        expect(d.parse('1 hours 33 mins 2 seconds').seconds()).toBe(5582)
-        expect(d.parse('2 w 3day 1 h 33 m 2 sec').seconds()).toBe(1474382)
+        expect(d.parse('1 hours 33 mins 2 seconds').seconds()).toBe(5582);
+        expect(d.parse('2 w 3day 1 h 33 m 2 sec').seconds()).toBe(1474382);
 
         expect(d.parse('5 weeks').weeks()).toBe(5);
         expect(d.parse('6w').weeks()).toBe(6);
@@ -38,6 +38,20 @@ describe("DurationJS", function() {
         expect(d.parse('.2 hours').seconds()).toBe(720);
 
         expect(d.parse('.5 seconds').seconds()).toBe(0.5);
+    });
+
+    it("can create a duration from an existing one", function(){
+        var d = new Duration("1000s");
+        var d2 = new Duration(d);
+
+        expect(d2.seconds()).toBe(1000);
+    });
+
+    it("can format a time to a given format", function(){
+        var a = new Duration('5 week 2d 7h 17 minutes 6 s');
+
+        expect(a.format('ww weeks dd days hh hours mm minutes ss seconds')).toBe("5 weeks 2 days 7 hours 17 minutes 6 seconds");
+        expect(a.format('ww weeks hh hours')).toBe("5 weeks 55 hours");
     });
 
 });
